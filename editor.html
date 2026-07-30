@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editor de Pagadores — Casa de Campo Fin de Año</title>
+  <meta name="description" content="Editor visual para preparar el JSON de pagadores. No guarda cambios en GitHub." />
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="./css/editor.css" />
+</head>
+<body>
+  <header class="hero hero--compacto">
+    <p class="hero__eyebrow">Casa de Campo · Editor</p>
+    <h1 class="hero__title">Editor de Pagadores</h1>
+    <p class="hero__subtitle">Genera el JSON manualmente. Nada se guarda ni se sube a GitHub desde aquí.</p>
+  </header>
+
+  <p id="anuncios" class="visually-hidden" role="status" aria-live="polite"></p>
+
+  <main class="editor-layout">
+    <section class="panel" aria-labelledby="titulo-fuente">
+      <h2 id="titulo-fuente">1. Origen de los datos</h2>
+      <p id="estado-carga" class="estado" role="status"></p>
+
+      <div class="acciones-fuente">
+        <button type="button" id="btn-recargar" class="btn btn--primario">Recargar data/pagadores.json</button>
+        <label class="btn btn--secundario" for="input-archivo">Importar archivo .json</label>
+        <input type="file" id="input-archivo" accept=".json,application/json" class="visually-hidden" />
+        <button type="button" id="btn-restablecer" class="btn btn--secundario">Restablecer datos cargados</button>
+      </div>
+
+      <details class="pegado">
+        <summary>Pegar JSON manualmente</summary>
+        <div class="campo">
+          <label for="textarea-pegado">Contenido JSON</label>
+          <textarea id="textarea-pegado" rows="6" placeholder="[ &quot;nombre&quot;: &quot;...&quot; ]"></textarea>
+        </div>
+        <button type="button" id="btn-aplicar-pegado" class="btn btn--secundario">Aplicar JSON pegado</button>
+      </details>
+
+      <div id="panel-errores-import" class="panel-errores" hidden>
+        <div class="panel-errores__cabecera">
+          <h3>Errores de importación</h3>
+          <button type="button" id="btn-cerrar-errores" class="btn--texto">Cerrar</button>
+        </div>
+        <p class="campo__ayuda">Estos registros se cargaron igual para que puedas corregirlos sin perder el resto de los datos.</p>
+        <ul id="lista-errores-import"></ul>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="titulo-form">
+      <h2 id="titulo-form"><span id="form-modo">2. Nuevo participante</span></h2>
+      <form id="form-participante" novalidate>
+        <div class="campo">
+          <label for="input-nombre">Nombre</label>
+          <input type="text" id="input-nombre" name="nombre" required autocomplete="off" />
+          <p class="campo__error" id="error-nombre" aria-live="polite"></p>
+        </div>
+
+        <div class="campo campo--foto">
+          <label for="input-foto">Fotografía (ruta relativa o URL)</label>
+          <input type="text" id="input-foto" name="foto" placeholder="photo/nombre.webp o https://…" autocomplete="off" />
+          <p class="campo__ayuda">Si se deja vacío se usará photo/default.webp.</p>
+          <p class="campo__error" id="error-foto" aria-live="polite"></p>
+          <div class="foto-preview">
+            <img id="preview-foto" src="./photo/default.webp" alt="Previsualización de la fotografía del participante" />
+          </div>
+        </div>
+
+        <div class="campo">
+          <label for="input-fecha">Fecha y hora de pago (hora de Lima, UTC-05:00)</label>
+          <input type="datetime-local" id="input-fecha" name="fechaPago" step="1" required />
+          <p class="campo__error" id="error-fecha" aria-live="polite"></p>
+          <p class="campo__ayuda" id="posicion-preview" aria-live="polite"></p>
+        </div>
+
+        <div class="acciones-form">
+          <button type="submit" id="btn-guardar" class="btn btn--primario">Guardar participante</button>
+          <button type="button" id="btn-cancelar-edicion" class="btn btn--secundario" hidden>Cancelar edición</button>
+          <button type="button" id="btn-limpiar-form" class="btn--texto">Limpiar formulario</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel" aria-labelledby="titulo-ranking">
+      <div class="panel__cabecera">
+        <h2 id="titulo-ranking">3. Ranking calculado</h2>
+        <button type="button" id="btn-ordenar" class="btn btn--secundario">Ordenar por fecha de pago</button>
+      </div>
+      <p id="estado-lista" class="estado" role="status"></p>
+      <ol id="lista-ranking" class="lista-ranking"></ol>
+    </section>
+
+    <section class="panel" aria-labelledby="titulo-json">
+      <div class="panel__cabecera">
+        <h2 id="titulo-json">4. JSON resultante</h2>
+        <p id="estado-export" class="estado-export"></p>
+      </div>
+      <label class="visually-hidden" for="salida-json">JSON resultante, listo para copiar o descargar</label>
+      <textarea id="salida-json" class="salida-json" readonly rows="14" spellcheck="false"></textarea>
+      <div class="acciones-form">
+        <button type="button" id="btn-copiar" class="btn btn--primario">Copiar JSON</button>
+        <button type="button" id="btn-descargar" class="btn btn--secundario">Descargar pagadores.json</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p><a href="./index.html">← Volver al ranking público</a></p>
+  </footer>
+
+  <script src="./js/shared.js"></script>
+  <script src="./js/editor.js"></script>
+</body>
+</html>

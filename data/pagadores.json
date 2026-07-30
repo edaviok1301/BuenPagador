@@ -1,0 +1,17 @@
+[
+  {
+    "nombre": "Hans Omonte",
+    "foto": "photo/default.webp",
+    "fechaPago": "2026-07-30T03:39:00-05:00"
+  },
+  {
+    "nombre": "Buen pagador 2",
+    "foto": "photo/default.webp",
+    "fechaPago": "2026-07-30T18:12:42-05:00"
+  },
+  {
+    "nombre": "Buen pagador 3",
+    "foto": "photo/default.webp",
+    "fechaPago": "2026-07-30T18:12:54-05:00"
+  }
+]

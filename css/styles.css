@@ -1,0 +1,368 @@
+/* ===========================================================
+   Casa de Campo — Fin de Año · Ranking de Pagadores
+   Sistema visual: cálido, festivo, elegante. Sin frameworks.
+   =========================================================== */
+
+:root {
+  --bg-0: #1a1024;
+  --bg-1: #241531;
+  --bg-2: #2f1c3d;
+  --surface: #2a1834;
+  --surface-elevada: #33203f;
+  --borde: rgba(240, 207, 148, 0.16);
+
+  --texto: #f6ecdd;
+  --texto-muted: #cbb9c9;
+  --texto-tenue: #a898ac;
+
+  --oro: #e8c07d;
+  --oro-fuerte: #d6a864;
+  --plata: #cfd6e4;
+  --bronce: #cf8f66;
+
+  --acento: #e0645b;
+  --acento-verde: #5aa876;
+
+  --radio-sm: 10px;
+  --radio-md: 16px;
+  --radio-lg: 24px;
+  --radio-pill: 999px;
+
+  --sombra-card: 0 12px 30px rgba(10, 4, 16, 0.45);
+  --fuente: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--fuente);
+  color: var(--texto);
+  background:
+    radial-gradient(circle at 15% -10%, rgba(232, 192, 125, 0.16), transparent 40%),
+    radial-gradient(circle at 85% 0%, rgba(224, 100, 91, 0.14), transparent 45%),
+    linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 55%, var(--bg-2) 100%);
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+a {
+  color: var(--oro);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--oro);
+  outline-offset: 2px;
+  border-radius: var(--radio-sm);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  text-align: center;
+  padding: 3rem 1.25rem 2rem;
+}
+
+.hero__eyebrow {
+  margin: 0 0 0.5rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  color: var(--oro);
+  font-weight: 600;
+}
+
+.hero__title {
+  margin: 0;
+  font-size: clamp(1.9rem, 5vw, 3rem);
+  font-weight: 800;
+  background: linear-gradient(120deg, var(--oro-fuerte), var(--acento) 65%, var(--oro));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero__subtitle {
+  margin: 0.6rem auto 0;
+  max-width: 32rem;
+  color: var(--texto-muted);
+  font-size: 1rem;
+}
+
+/* ---------- Estado (carga / error / vacío) ---------- */
+.contenido {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1.25rem 3rem;
+}
+
+.estado {
+  max-width: 34rem;
+  margin: 0 auto 2rem;
+  padding: 0.9rem 1.2rem;
+  border-radius: var(--radio-md);
+  text-align: center;
+  font-size: 0.95rem;
+  border: 1px solid var(--borde);
+  background: var(--surface);
+  color: var(--texto-muted);
+}
+
+.estado--error {
+  border-color: rgba(224, 100, 91, 0.5);
+  background: rgba(224, 100, 91, 0.12);
+  color: #f5c9c4;
+}
+
+.estado--vacio {
+  border-color: rgba(232, 192, 125, 0.4);
+  background: rgba(232, 192, 125, 0.08);
+  color: var(--oro);
+}
+
+/* ---------- Podio ---------- */
+.podio {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 1rem 0 2.5rem;
+}
+
+.puesto {
+  width: 15.5rem;
+  background: linear-gradient(160deg, var(--surface-elevada), var(--surface));
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-lg);
+  padding: 1.5rem 1.25rem 1.75rem;
+  text-align: center;
+  box-shadow: var(--sombra-card);
+  animation: aparecer 0.5s ease both;
+  position: relative;
+}
+
+.puesto__medalla {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radio-pill);
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.puesto__foto-wrap {
+  width: 6.5rem;
+  height: 6.5rem;
+  margin: 0 auto 0.9rem;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(140deg, var(--oro), var(--acento));
+}
+
+.puesto[data-rank="1"] .puesto__foto-wrap {
+  width: 8rem;
+  height: 8rem;
+}
+
+.puesto__foto {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--bg-1);
+  background: var(--bg-1);
+}
+
+.puesto__nombre {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.puesto__fecha {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--texto-muted);
+}
+
+.puesto__fecha--invalida {
+  color: #f5c9c4;
+  font-weight: 600;
+}
+
+/* Jerarquía visual del podio: 1º centro y más alto, 2º izquierda, 3º derecha */
+.puesto[data-rank="1"] {
+  order: 2;
+  transform: translateY(-0.75rem);
+  z-index: 2;
+  border-color: rgba(232, 192, 125, 0.45);
+  box-shadow: 0 18px 40px rgba(232, 192, 125, 0.18), var(--sombra-card);
+  animation-delay: 0.05s;
+}
+
+.puesto[data-rank="2"] {
+  order: 1;
+  animation-delay: 0.15s;
+}
+
+.puesto[data-rank="3"] {
+  order: 3;
+  animation-delay: 0.25s;
+}
+
+.puesto[data-rank="1"] .puesto__medalla {
+  background: rgba(232, 192, 125, 0.18);
+  color: var(--oro);
+  border: 1px solid rgba(232, 192, 125, 0.5);
+}
+
+.puesto[data-rank="2"] .puesto__medalla {
+  background: rgba(207, 214, 228, 0.14);
+  color: var(--plata);
+  border: 1px solid rgba(207, 214, 228, 0.4);
+}
+
+.puesto[data-rank="3"] .puesto__medalla {
+  background: rgba(207, 143, 102, 0.16);
+  color: var(--bronce);
+  border: 1px solid rgba(207, 143, 102, 0.45);
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Resto de participantes ---------- */
+.seccion-resto__titulo {
+  text-align: center;
+  font-size: 1.3rem;
+  margin: 0 0 1.25rem;
+  color: var(--texto);
+}
+
+.participantes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1rem;
+}
+
+.tarjeta {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-md);
+  padding: 0.85rem 1rem;
+  animation: aparecer 0.4s ease both;
+}
+
+.tarjeta__rango {
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: rgba(240, 207, 148, 0.1);
+  color: var(--oro);
+  border: 1px solid var(--borde);
+}
+
+.tarjeta__foto {
+  flex: none;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--bg-1);
+  background: var(--bg-1);
+}
+
+.tarjeta__info {
+  min-width: 0;
+}
+
+.tarjeta__nombre {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.98rem;
+  overflow-wrap: anywhere;
+}
+
+.tarjeta__fecha {
+  margin: 0.15rem 0 0;
+  font-size: 0.82rem;
+  color: var(--texto-muted);
+}
+
+.tarjeta__fecha--invalida {
+  color: #f5c9c4;
+  font-weight: 600;
+}
+
+/* ---------- Pie ---------- */
+.pie {
+  text-align: center;
+  padding: 1.5rem 1rem 2.5rem;
+  color: var(--texto-tenue);
+  font-size: 0.85rem;
+}
+
+.pie a {
+  color: var(--texto-muted);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .podio {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .puesto {
+    width: 100%;
+    max-width: 22rem;
+  }
+
+  .puesto[data-rank="1"] { order: 1; transform: none; }
+  .puesto[data-rank="2"] { order: 2; }
+  .puesto[data-rank="3"] { order: 3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

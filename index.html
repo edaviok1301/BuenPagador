@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ranking de Pagadores — Casa de Campo Fin de Año</title>
+  <meta name="description" content="Ranking de quienes ya pagaron su cuota para la casa de campo de fin de año." />
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <p class="hero__eyebrow">Casa de Campo · Fin de Año</p>
+    <h1 class="hero__title">Ranking de Pagadores</h1>
+    <p class="hero__subtitle">Quien paga primero, celebra con más brillo ✨</p>
+  </header>
+
+  <main class="contenido">
+    <p id="estado" class="estado" role="status" aria-live="polite" hidden></p>
+
+    <section id="podio" class="podio" aria-label="Podio de los tres primeros pagadores"></section>
+
+    <section id="seccion-resto" class="seccion-resto" aria-labelledby="titulo-resto" hidden>
+      <h2 id="titulo-resto" class="seccion-resto__titulo">Todos los pagadores</h2>
+      <div id="lista-resto" class="participantes-grid"></div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p>🎄 Nos vemos en la casa de campo. <a href="./editor.html">Editor de datos</a></p>
+  </footer>
+
+  <script src="./js/shared.js"></script>
+  <script src="./js/index.js"></script>
+</body>
+</html>

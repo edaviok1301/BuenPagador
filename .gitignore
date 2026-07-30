@@ -1,0 +1,5 @@
+# Claude Code / Claude AI — archivos y carpetas locales, no forman parte del proyecto
+.claude/
+CLAUDE.md
+.clauderules
+.mcp.json
