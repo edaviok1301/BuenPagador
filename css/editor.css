@@ -15,7 +15,13 @@
 }
 
 .hero--compacto {
-  padding: 2.25rem 1.25rem 1.5rem;
+  padding: 1.5rem 1.25rem 1.5rem;
+}
+
+/* El contenido del editor es más angosto (48rem) que el del ranking público;
+   el encabezado se alinea con ese mismo ancho en esta página. */
+.site-header__inner {
+  max-width: 48rem;
 }
 
 .editor-layout {
@@ -73,13 +79,13 @@ button {
 .btn:hover,
 button:hover {
   transform: translateY(-1px);
-  border-color: var(--oro-fuerte);
+  border-color: var(--oro);
 }
 
 .btn--primario,
 button[type="submit"] {
-  background: linear-gradient(120deg, var(--oro-fuerte), var(--acento));
-  color: #241531;
+  background: linear-gradient(120deg, var(--oro), var(--acento));
+  color: var(--on-accent);
   border-color: transparent;
 }
 
@@ -95,9 +101,9 @@ button[type="submit"] {
 }
 
 .btn--peligro {
-  border-color: rgba(224, 100, 91, 0.55);
-  color: #f5c9c4;
-  background: rgba(224, 100, 91, 0.1);
+  border-color: var(--danger);
+  color: var(--danger);
+  background: var(--danger-soft);
 }
 
 button:disabled {
@@ -122,7 +128,7 @@ button:disabled {
 }
 
 .estado--error {
-  color: #f5c9c4;
+  color: var(--danger);
 }
 
 .estado--exito {
@@ -162,7 +168,7 @@ button:disabled {
 .salida-json {
   width: 100%;
   margin-top: 0.6rem;
-  background: var(--bg-1);
+  background: var(--bg);
   color: var(--texto);
   border: 1px solid var(--borde);
   border-radius: var(--radio-md);
@@ -175,8 +181,8 @@ button:disabled {
 /* ---------- Panel de errores de importación ---------- */
 .panel-errores {
   margin-top: 1rem;
-  border: 1px solid rgba(224, 100, 91, 0.4);
-  background: rgba(224, 100, 91, 0.08);
+  border: 1px solid var(--danger);
+  background: var(--danger-soft);
   border-radius: var(--radio-md);
   padding: 1rem;
 }
@@ -191,7 +197,7 @@ button:disabled {
 .panel-errores h3 {
   margin: 0;
   font-size: 1rem;
-  color: #f5c9c4;
+  color: var(--danger);
 }
 
 .panel-errores ul {
@@ -224,7 +230,7 @@ button:disabled {
   padding: 0.65rem 0.8rem;
   border-radius: var(--radio-sm);
   border: 1px solid var(--borde);
-  background: var(--bg-1);
+  background: var(--bg);
   color: var(--texto);
   font-size: 0.95rem;
 }
@@ -237,7 +243,7 @@ button:disabled {
   margin: 0.4rem 0 0;
   min-height: 1.1em;
   font-size: 0.83rem;
-  color: #f5c9c4;
+  color: var(--danger);
   font-weight: 600;
 }
 
@@ -258,7 +264,7 @@ button:disabled {
   border-radius: 50%;
   overflow: hidden;
   border: 2px solid var(--borde);
-  background: var(--bg-1);
+  background: var(--bg);
 }
 
 .foto-preview img {
@@ -297,7 +303,7 @@ button:disabled {
   justify-content: center;
   font-weight: 700;
   font-size: 0.82rem;
-  background: rgba(240, 207, 148, 0.1);
+  background: var(--oro-suave);
   color: var(--oro);
   border: 1px solid var(--borde);
 }
@@ -308,8 +314,8 @@ button:disabled {
   height: 2.75rem;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid var(--bg-1);
-  background: var(--bg-1);
+  border: 2px solid var(--bg);
+  background: var(--bg);
 }
 
 .ranking-item__info {
@@ -336,9 +342,9 @@ button:disabled {
   border-radius: var(--radio-pill);
   font-size: 0.72rem;
   font-weight: 700;
-  color: #f5c9c4;
-  background: rgba(224, 100, 91, 0.15);
-  border: 1px solid rgba(224, 100, 91, 0.4);
+  color: var(--danger);
+  background: var(--danger-soft);
+  border: 1px solid var(--danger);
 }
 
 .ranking-item__acciones {

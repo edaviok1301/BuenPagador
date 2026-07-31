@@ -60,6 +60,28 @@
     }
   }
 
+  var MESES_CORTOS = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+
+  /** Formatea fechaPago de forma compacta ("30 jul 2026 · 6:12 p. m."), zona horaria America/Lima. */
+  function formatearFechaCorta(fechaPago) {
+    if (!esFechaValida(fechaPago)) return 'Fecha pendiente de corrección';
+    var fecha = new Date(fechaPago);
+    try {
+      var fmt = new Intl.DateTimeFormat('es-PE', {
+        day: 'numeric', month: 'numeric', year: 'numeric',
+        hour: 'numeric', minute: '2-digit', hour12: true,
+        timeZone: LIMA_TIMEZONE
+      });
+      var partes = {};
+      fmt.formatToParts(fecha).forEach(function (p) { partes[p.type] = p.value; });
+      var mes = MESES_CORTOS[Number(partes.month) - 1] || partes.month;
+      return partes.day + ' ' + mes + ' ' + partes.year + ' · ' +
+        partes.hour + ':' + partes.minute + ' ' + partes.dayPeriod;
+    } catch (err) {
+      return formatearFechaLima(fechaPago);
+    }
+  }
+
   /**
    * Convierte un valor de <input type="datetime-local"> (hora local del navegador,
    * interpretada como hora de Lima) al formato ISO 8601 con offset -05:00 explícito.
@@ -125,6 +147,7 @@
     esRegistroValido: esRegistroValido,
     ordenarPagadores: ordenarPagadores,
     formatearFechaLima: formatearFechaLima,
+    formatearFechaCorta: formatearFechaCorta,
     datetimeLocalALima: datetimeLocalALima,
     fechaISOADatetimeLocal: fechaISOADatetimeLocal,
     ahoraEnLimaISO: ahoraEnLimaISO,

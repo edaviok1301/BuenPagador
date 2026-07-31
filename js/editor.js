@@ -583,6 +583,10 @@
 
   // ---------- Inicialización ----------
   function init() {
+    if (window.CasaCampoTema) {
+      window.CasaCampoTema.inicializarBotonTema(document.getElementById('theme-toggle'));
+    }
+
     actualizarVistaFormularioNuevo();
     renderTodo();
     cargarAutomatico();

@@ -1,0 +1,91 @@
+/* ===========================================================
+   Casa de Campo — Fin de Año · Tokens de tema (claro / oscuro)
+   Fuente única de verdad para los colores. Consumido por
+   css/styles.css y css/editor.css a través de variables
+   semánticas; cambiar [data-theme] recolorea todo el sitio.
+   =========================================================== */
+
+:root,
+[data-theme="light"] {
+  --background: #fbf7f2;
+  --surface: #ffffff;
+  --surface-elevated: #fffaf6;
+  --text-primary: #2b182e;
+  --text-secondary: #5d5060;
+  --text-tertiary: #786a7c;
+  --primary: #c04c33;
+  --gold: #8a5906;
+  --gold-soft: rgba(138, 89, 6, 0.12);
+  --silver: #4f4a63;
+  --silver-soft: rgba(79, 74, 99, 0.1);
+  --bronze: #93532f;
+  --bronze-soft: rgba(147, 83, 47, 0.12);
+  --border: #e7d9e3;
+  --shadow: rgba(43, 24, 46, 0.12);
+  --danger: #a83a30;
+  --danger-soft: rgba(168, 58, 48, 0.1);
+  --success: #2f7a4d;
+  --avatar-bg: #ece3ea;
+  --avatar-fg: #7d6f82;
+  --bg-glow-1: rgba(196, 118, 30, 0.07);
+  --bg-glow-2: rgba(192, 76, 51, 0.06);
+  /* Texto sobre superficies con degradado oro/acento (p. ej. botón primario):
+     en claro ese degradado es oscuro -> texto claro; en oscuro es claro -> texto oscuro. */
+  --on-accent: #fffaf6;
+}
+
+[data-theme="dark"] {
+  --background: #1b1021;
+  --surface: #29172f;
+  --surface-elevated: #321c39;
+  --text-primary: #f8edf3;
+  --text-secondary: #cdbac7;
+  --text-tertiary: #a898ac;
+  --primary: #f08867;
+  --gold: #f2c36b;
+  --gold-soft: rgba(242, 195, 107, 0.14);
+  --silver: #c7c1d4;
+  --silver-soft: rgba(199, 193, 212, 0.12);
+  --bronze: #dc9165;
+  --bronze-soft: rgba(220, 145, 101, 0.13);
+  --border: #4a2f52;
+  --shadow: rgba(0, 0, 0, 0.32);
+  --danger: #f5a49c;
+  --danger-soft: rgba(224, 100, 91, 0.12);
+  --success: #7bd19c;
+  --avatar-bg: #3a2542;
+  --avatar-fg: #b6a6bb;
+  --bg-glow-1: rgba(232, 192, 125, 0.16);
+  --bg-glow-2: rgba(224, 100, 91, 0.14);
+  --on-accent: #241531;
+}
+
+body,
+.card,
+.puesto,
+.tarjeta,
+.tarjeta-principal,
+.tarjeta-secundaria,
+.site-header,
+.theme-toggle,
+.panel,
+.btn,
+button,
+input,
+textarea {
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
